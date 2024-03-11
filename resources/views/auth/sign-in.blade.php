@@ -4,14 +4,23 @@
 
 @section('content')
 
-<div class="h-scree flex flex-col justify-center items-center">
+@if($message = Session::get('erro'))
+    {{$message}}
+@endif
+
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        {{$error}} <br />
+    @endforeach
+@endif
+
+<div class="h-screen flex flex-col justify-center items-center">
   <h1 class="text-gray-400 text-4xl mb-4">Login</h1>
 
-  <form class="w-80" action="">
-    @csrf
-
+  <form class="w-80" action="{{route('auth.authenticate')}}" method="POST">
     <div class="flex flex-col gap-4 text-sm">
-      <input class="p-2 outline-none rounded-sm border-2 focus:border-blue-600 transition-all" type="email" name="e-mail" placeholder="E-mail">
+      @csrf
+      <input class="p-2 outline-none rounded-sm border-2 focus:border-blue-600 transition-all" name="email" placeholder="E-mail">
       <input class="p-2 outline-none rounded-sm border-2 focus:border-blue-600" type="password" name="password" placeholder="Senha">
     </div>
 
