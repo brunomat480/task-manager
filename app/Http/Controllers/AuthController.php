@@ -3,61 +3,47 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   */
-  public function index()
-  {
-    //
-  }
 
-  /**
-   * Show the form for creating a new resource.
-   */
   public function create()
   {
     return view('auth.sign-up');
   }
 
-  /**
-   * Store a newly created resource in storage.
-   */
-  public function store(Request $request)
+  public function auth(Request $request)
   {
+    $userCredentials = $request->validate(
+      [
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+      ],
+      [
+        'email.required' => 'Informe o e-mail e a senha',
+        'email.email' => 'O email não é válido',
+        'password.required' => 'Informe o e-mail e a senha',
+      ]
+    );
+
+    if (Auth::attempt($userCredentials, $request->remember)) {
+
+      $request->session()->regenerate();
+
+      return redirect()->intended(route('app.home'));
+    } else {
+      return redirect()->back()->with('erro', 'Usuário ou senha inválido');
+    }
   }
 
-  /**
-   * Display the specified resource.
-   */
-  public function show(string $id)
+  public function logOut(Request $request)
   {
-    //
-  }
+    Auth::logout();
 
-  /**
-   * Show the form for editing the specified resource.
-   */
-  public function edit(string $id)
-  {
-    //
-  }
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
 
-  /**
-   * Update the specified resource in storage.
-   */
-  public function update(Request $request, string $id)
-  {
-    //
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   */
-  public function destroy(string $id)
-  {
-    //
+    return redirect(route('auth.signin'));
   }
 }
