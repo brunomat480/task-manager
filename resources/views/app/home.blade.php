@@ -31,17 +31,23 @@
     </form>
 
     <div class="w-[700px] mt-5 flex justify-start gap-3">
+      <a class="text-white p-2 text-xs font-semibold bg-blue-600 bg-opacity-30 rounded-xl hover:bg-opacity-100 uppercase" href="{{route('app.home')}}" >Todos</a>
+
       @foreach ($categoriesTask as $categorie)
-      <a class="text-white p-2 text-xs font-semibold bg-blue-600 bg-opacity-30 rounded-xl hover:bg-opacity-100 uppercase" href="">{{$categorie->name}}</a>
+      <a class="text-white p-2 text-xs font-semibold bg-blue-600 bg-opacity-30 rounded-xl hover:bg-opacity-100 uppercase" href="{{route('app.categorie', $categorie->id)}}" >{{$categorie->name}}</a>
       @endforeach
 
 
     </div>
 
     <div class="flex items-center justify-between w-[700px] text-white mt-14 border-b-[1px] border-gray-700">
-      <strong class="text-sm">Tarefas criadas: <span>0</span></strong>
+      <strong class="text-sm">Tarefas criadas: {{$tasks->count()}}</strong>
       <strong class="text-sm">Tarefas concluídas: <span>0</span></strong>
     </div>
+
+
+
+    {{-- @yield('categorie-tasks') --}}
 
     @foreach ($tasks as $task)
     <div class="w-[700px] flex items-center gap-10 p-3 bg-slate-800 mt-8 rounded-md">

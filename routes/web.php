@@ -11,6 +11,7 @@ Route::resource('users', UserController::class);
 Route::resource('tasks', TaskController::class);
 
 Route::get('/', [AppController::class, 'index'])->name('app.home')->middleware('auth');
+Route::get('/categorie/{id}', [AppController::class, 'categorie'])->name('app.categorie');
 
 Route::view('/signIn', 'auth.sign-in')->name('auth.signin');
 Route::get('/signUp', [AuthController::class, 'create'])->name('auth.signup');

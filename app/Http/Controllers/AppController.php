@@ -19,4 +19,15 @@ class AppController extends Controller
 
     // return view('app.home');
   }
+
+  public function categorie($id)
+  {
+    $tasks = Task::where('id_categorie', $id)->get();
+
+    if ($tasks->count() === 0) {
+      return view('app.home');
+    } else {
+      return view('components.categories', compact('tasks'));
+    }
+  }
 }
