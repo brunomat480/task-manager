@@ -8,14 +8,16 @@
     {{$message}}
 @endif
 
-@if ($errors->any())
-    @foreach ($errors->all() as $error)
-        {{$error}} <br />
-    @endforeach
-@endif
-
 <div class="h-screen flex flex-col justify-center items-center">
   <h1 class="text-gray-400 text-4xl mb-4">Login</h1>
+
+  @if ($errors->any())
+  <span class="text-red-500">{{$errors->first()}}</span>
+
+    {{-- @foreach ($errors->all() as $error)
+        {{$error}} <br />
+    @endforeach --}}
+  @endif
 
   <form class="w-80" action="{{route('auth.authenticate')}}" method="POST" enctype="multipart/form-data">
     <div class="flex flex-col gap-4 text-sm">

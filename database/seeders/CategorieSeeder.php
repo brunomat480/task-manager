@@ -17,16 +17,16 @@ class CategorieSeeder extends Seeder
   {
     DB::table('categories')->insert([
       [
-        'name' => 'lipeza',
+        'name' => 'Limpeza',
       ],
       [
-        'name' => 'estudos',
+        'name' => 'Estudos',
       ],
       [
-        'name' => 'compras',
+        'name' => 'Compras',
       ],
       [
-        'name' => 'trabalho',
+        'name' => 'Trabalho',
       ]
     ]);
   }

@@ -13,6 +13,9 @@ Route::resource('tasks', TaskController::class);
 Route::get('/', [AppController::class, 'index'])->name('app.home')->middleware('auth');
 Route::get('/categorie/{id}', [AppController::class, 'categorie'])->name('app.categorie');
 
+Route::get('/delete/{id}', [TaskController::class, 'destroy'])->name('task.delete');
+Route::post('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
+
 Route::view('/signIn', 'auth.sign-in')->name('auth.signin');
 Route::get('/signUp', [AuthController::class, 'create'])->name('auth.signup');
 

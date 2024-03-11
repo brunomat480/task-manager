@@ -22,10 +22,10 @@ class AppController extends Controller
 
   public function categorie($id)
   {
-    $tasks = Task::where('id_categorie', $id)->get();
+    $tasks = Task::where('id_categorie', $id)->where('id_user', auth()->user()->id)->get();
 
     if ($tasks->count() === 0) {
-      return view('app.home');
+      return redirect()->route('app.home')->with('warning', 'Você não possui tarefas com essa categoria');
     } else {
       return view('components.categories', compact('tasks'));
     }
