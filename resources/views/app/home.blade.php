@@ -43,10 +43,11 @@
       <strong class="text-sm">Tarefas concluídas: <span>0</span></strong>
     </div>
 
+    @foreach ($tasks as $task)
     <div class="w-[700px] flex items-center gap-10 p-3 bg-slate-800 mt-8 rounded-md">
       <div class="flex gap-4">
-        <input type="checkbox" name="" id="">
-        <p class="w-full text-sm text-white">Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+        <input type="checkbox" value="{{$task->completed}}" name="" id="">
+        <p class="w-full text-sm text-white">{{$task->description}}</p>
       </div>
 
       <div class="flex items-center gap-3">
@@ -54,6 +55,8 @@
         <button><i class="ph ph-trash w-6 h-6 text-gray-400 hover:text-red-500"></i></button>
       </div>
     </div>
+    @endforeach
+
   </div>
 
 </div>

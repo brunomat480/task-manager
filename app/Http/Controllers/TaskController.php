@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+
 
 use App\Models\Task;
 
@@ -13,7 +15,6 @@ class TaskController extends Controller
    */
   public function index()
   {
-    //
   }
 
   /**
@@ -36,7 +37,7 @@ class TaskController extends Controller
       'id_categorie' => $request->categorie,
     ]);
 
-    return view('app.home');
+    return redirect()->route('app.home');
   }
 
   /**
