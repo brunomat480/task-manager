@@ -4,9 +4,11 @@ use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 
 Route::resource('users', UserController::class);
+Route::resource('tasks', TaskController::class);
 
 Route::get('/', [AppController::class, 'index'])->name('app.home')->middleware('auth');
 

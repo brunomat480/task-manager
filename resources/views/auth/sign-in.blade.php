@@ -17,7 +17,7 @@
 <div class="h-screen flex flex-col justify-center items-center">
   <h1 class="text-gray-400 text-4xl mb-4">Login</h1>
 
-  <form class="w-80" action="{{route('auth.authenticate')}}" method="POST">
+  <form class="w-80" action="{{route('auth.authenticate')}}" method="POST" enctype="multipart/form-data">
     <div class="flex flex-col gap-4 text-sm">
       @csrf
       <input class="p-2 outline-none rounded-sm border-2 focus:border-blue-600 transition-all" name="email" placeholder="E-mail">

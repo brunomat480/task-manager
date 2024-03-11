@@ -7,7 +7,7 @@
 <div class="h-screen flex flex-col justify-center items-center">
   <h1 class="text-gray-400 text-4xl mb-4">Cadastro</h1>
 
-  <form class="w-80" action="{{route('users.store')}}" method="POST">
+  <form class="w-80" action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
 
     <div class="flex flex-col gap-4 text-sm">
       @csrf
