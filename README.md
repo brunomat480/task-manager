@@ -2,7 +2,7 @@
 
 ##
 
-#### web
+####
 
 Clone o repositório:
 ```bash
@@ -18,18 +18,22 @@ composer install
 ```
 ##
 
-#### web
+####
 Banco de dados:
+
+- Crie o banco de dados com o taskmanager (pode criar no phpmyadmin)
+- Adicione o banco taskmanager no .env
+
+Use os comandos:
 ```bash
 php artisan migrate
 ```
 ```bash
 php artisan db:seed
 ```
-
 ##
 
-#### web
+####
 inicie a aplicação:
 ```bash
 npm run dev
@@ -38,5 +42,4 @@ abra outro terminal e execute o comando:
 ```bash
 php artisan dev
 ```
-
 ##
