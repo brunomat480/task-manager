@@ -40,6 +40,6 @@ npm run dev
 ```
 abra outro terminal e execute o comando:
 ```bash
-php artisan dev
+php artisan serve
 ```
 ##
