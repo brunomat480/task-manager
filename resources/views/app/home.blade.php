@@ -6,6 +6,10 @@
 
 <div>
   <header>
+    <div class="flex flex-col justify-center items-end mr-8 mt-2">
+      <strong class="text-white">Olá, {{auth()->user()->username}}</strong>
+      <a class="flex items-center gap-2 text-white hover:text-red-500 transition-colors select-none" href="{{route('auth.logout')}}">Sair <i class="ph ph-sign-out text-red-500"></i></a>
+    </div>
     <h1 class="text-white bg-gray-950 font-bold text-6xl text-center py-12">TASKS</h1>
   </header>
 

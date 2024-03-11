@@ -27,7 +27,6 @@ class AuthController extends Controller
       ]
     );
 
-    var_dump($userCredentials);
     if (Auth::attempt($userCredentials, $request->remember)) {
 
       $request->session()->regenerate();
@@ -36,5 +35,15 @@ class AuthController extends Controller
     } else {
       return redirect()->back()->with('erro', 'Usuário ou senha inválido');
     }
+  }
+
+  public function logOut(Request $request)
+  {
+    Auth::logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect(route('auth.signin'));
   }
 }

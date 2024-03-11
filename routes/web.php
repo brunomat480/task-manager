@@ -8,8 +8,10 @@ use App\Http\Controllers\UserController;
 
 Route::resource('users', UserController::class);
 
-Route::get('/', [AppController::class, 'index'])->name('app.home');
+Route::get('/', [AppController::class, 'index'])->name('app.home')->middleware('auth');
 
 Route::view('/signIn', 'auth.sign-in')->name('auth.signin');
-Route::post('/auth', [AuthController::class, 'auth'])->name('auth.authenticate');
 Route::get('/signUp', [AuthController::class, 'create'])->name('auth.signup');
+
+Route::post('/auth', [AuthController::class, 'auth'])->name('auth.authenticate');
+Route::get('/logOut', [AuthController::class, 'logOut'])->name('auth.logout');

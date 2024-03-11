@@ -35,9 +35,9 @@ class UserController extends Controller
     $user['password'] = bcrypt($request->password);
     $user = User::create($user);
 
-    // Auth::login($user);
+    Auth::login($user);
 
-    // return redirect()->route('admin.dashboard');
+    return redirect()->route('app.home');
   }
 
   /**
