@@ -21,7 +21,7 @@ composer install
 ####
 Banco de dados:
 
-- Crie o banco de dados com o taskmanager (pode criar no phpmyadmin)
+- Crie o banco de dados com o nome taskmanager (pode criar no phpmyadmin)
 - Adicione o banco taskmanager no .env
 
 Use os comandos:
